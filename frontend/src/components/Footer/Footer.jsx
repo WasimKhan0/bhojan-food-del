@@ -1,14 +1,17 @@
 import React from 'react'
 import "./Footer.css"
 import { assets } from '../../assets/assets'
+import logo from './logo-white.png'
+import { useNavigate } from 'react-router-dom'
 const Footer = () => {
+const navigate = useNavigate();
     return (
         <div className='footer' id='footer'>
             <div className="footer-content">
 
                 <div className="footer-content-left">
-                    <p>At Tomato, every bite is a symphony of flavor! We're dedicated to sourcing the freshest ingredients and crafting culinary masterpieces that delight your senses. From the first taste to the last, our commitment to quality shines through.</p>
-                     <img src={assets.logo} alt='' />
+                    <p>At bhojan, every bite is a symphony of flavor! We're dedicated to sourcing the freshest ingredients and crafting culinary masterpieces that delight your senses. From the first taste to the last, our commitment to quality shines through.</p>
+                     <img onClick={()=>{navigate('/')}} className='logo' src={logo} alt='' />
                     <div className="footer-social-icons">
                         <img src={assets.facebook_icon} alt=''/>
                         <img src={assets.twitter_icon} alt=''/>

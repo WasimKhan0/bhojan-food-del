@@ -3,22 +3,34 @@ import { assets } from '../../assets/assets';
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
+import logo from './logo.png'
+import cart from './cart.png'
+import h1 from './redheart.png'
+import h2 from './emptyheart.png'
 
-const Navbar = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState('home');
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+
+const Navbar = ({ setShowLogin, setShowAdmin, showAdmin, showLogin }) => {
+  // const [menu, setMenu] = useState('home');
+  // const { cartItems, addToCart, removeFromCart, url, wishList, setWishList } = useContext(StoreContext);
+
+  const { getTotalCartAmount, token, setToken, wishList,menu,setMenu } = useContext(StoreContext);
   const navigate = useNavigate();
   const userToken = localStorage.getItem('token');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     setToken('');
-    navigate('/'); // Use navigate here
+    navigate('/');
+    localStorage.setItem('admin', 'false');
   };
+  const handleAdmin = () => {
+    setShowAdmin(true);
+    setShowLogin(true)
+  }
 
   return (
     <div className="navbar">
-      <img src={assets.logo} alt="" className="logo" onClick={() => navigate('/')} />
+      <img src={logo} alt="" className="logo" onClick={() => navigate('/')} />
       <ul className="navbar-menu">
         <Link to="/" onClick={() => setMenu('home')} className={menu === 'home' ? 'active' : ''}>
           home
@@ -38,13 +50,22 @@ const Navbar = ({ setShowLogin }) => {
         </a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+
+        {
+          wishList.length === 0 ? <img src={h2} alt="" onClick={() => navigate('/wishlist')} />
+            : <img src={h1} alt="" onClick={() => navigate('/wishlist')} />
+
+        }
         <div className="navbar-search-icon">
-          <img src={assets.basket_icon} onClick={() => navigate('/cart')} alt="" />
+          <img src={cart} onClick={() => navigate('/cart')} alt="" />
           {getTotalCartAmount() > 0 ? <div className="dot"></div> : <></>}
         </div>
         {!userToken ? (
-          <button onClick={() => setShowLogin(true)}>sign in</button>
+
+          <div className='boxa'>
+            <button onClick={() => setShowLogin(true)}>sign in</button>
+            <button onClick={() => handleAdmin()}>Admin</button>
+          </div>
         ) : (
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
@@ -54,6 +75,7 @@ const Navbar = ({ setShowLogin }) => {
                 <p>Orders</p>
               </li>
               <hr />
+
               <li onClick={handleLogout}>
                 <img src={assets.logout_icon} alt="" />
                 <p>Logout</p>

@@ -1,9 +1,11 @@
 .header {
     height: 34vw;
     margin: 30px auto;
-    background: url('/header_img.png') no-repeat;
+    /* background: url('https://w0.peakpx.com/wallpaper/213/447/HD-wallpaper-food-burger-meat-still-life.jpg') no-repeat; */
+    background: url('./header-img.jpg') no-repeat;
     background-size: contain;
     position: relative;
+    border-radius: 50px;
 }
 
 .header-contents {
@@ -29,7 +31,7 @@
     font-size: 1vw;
 }
 
-.header-contents button {
+.header-contents a {
     border: none;
     color: #747474;
     font-weight: 500;

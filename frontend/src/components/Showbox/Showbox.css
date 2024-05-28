@@ -1,0 +1,405 @@
+.food-box {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    /* height: 100%; */
+    min-height: 100%;
+    background-color: #cbcbcb90;
+    display: grid;
+}
+
+.box-container {
+    place-self: center;
+    width: 1000px;
+    /* height: 500px; */
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
+}
+
+.contenta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.food-item-image {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.food-item-info {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    justify-content: start;
+
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.food-item-desc {
+    margin-bottom: 10px;
+}
+
+
+.food-item-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    transform: translateX(-100px);
+}
+
+.cross-showBox {
+    cursor: pointer;
+}
+
+.reviews {
+    color: black;
+    font-weight: 600;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    
+    margin-left: -100px;
+     width: 400px;
+
+}
+
+
+
+.food-item-info {
+    width: 300px;
+
+}
+
+ 
+.form {
+     display: flex;
+    flex-direction: column;
+     max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: slideFadeIn 1s ease-in-out; 
+    font-family: Arial, sans-serif;
+}
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Individual section styling */
+.form div {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.form p {
+    margin: 0 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input field styling */
+.form input[type="number"],
+.form input[type="text"],
+.form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.form input[type="number"]:focus,
+.form input[type="text"]:focus,
+.form textarea:focus {
+    border-color: #0d0d0d;
+    outline: none;
+}
+
+/* Textarea styling */
+.form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Star rating section styling */
+.star {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Title section styling */
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Description section styling */
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Button styling */
+.form button[type='submit'] {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0d0d0d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form button[type='submit']:hover {
+    background-color: #333434;
+}
+
+.form button[type='submit']:active {
+    transform: scale(0.98);
+}
+
+.form button[type='submit']:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form {
+        padding: 15px;
+    }
+    
+    .form input[type="number"],
+    .form input[type="text"],
+    .form textarea {
+        width: calc(100% - 16px);
+        padding: 8px;
+    }
+}
+
+/* Styling for the overall review container */
+.user-review {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    /* border-radius: 10px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    /* overflow: hidden; */
+    max-height: 340px;
+    overflow-y: scroll;
+    transform: translateY(-10px);
+}
+.user-review hr{
+    margin-top: 6px;
+    opacity: 0.2;
+}
+
+/* Styling for the ratings section */
+.user-review .rate {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.user-review .global {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Container for the reviews to make it scrollable */
+.user-review .reviews-container {
+    max-height: 300px; /* Adjust this height as needed */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Individual review styling */
+.user-review .reviews-container > div {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-review .user-title p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 5px;
+}
+
+.user-review .user-desc p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Scrollbar styling (optional) */
+.user-review .reviews-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.user-review .reviews-container::-webkit-scrollbar-thumb {
+    background-color: #0d0d0d;
+    border-radius: 3px;
+}
+
+.user-review .reviews-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the "already reviewed" paragraph */
+.already {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8d7da; /* Red background color, adjust as needed */
+    color: #721c24; /* Dark red text color, adjust as needed */
+    border: 1px solid #f5c6cb; /* Red border color, adjust as needed */
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 50px;
+}
+.star-img{
+    width: 95px;
+    height: 19px;
+    margin-top: 5px;
+}
+.star-box{
+    display: flex;
+    gap: 15px;
+}
+.btn {
+    background-color: #151515;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.btn:hover {
+    background-color: #323131;
+    color: white;
+} 
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align all items */
+    text-align: center; /* Center text alignment for child elements */
+    gap: 20px; /* Space between elements */
+    padding: 20px; /* Padding around the content */
+    background-color: #fff; /* White background for a clean look */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.left:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+.left img.food-item-image {
+    width: 100%; /* Ensure the image takes full width */
+    max-width: 300px; /* Max width to avoid oversized images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the image */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.left img.food-item-image:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.food-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align text */
+    gap: 10px; /* Space between text elements */
+}
+
+.food-item-info .name {
+    font-size: 24px; /* Larger font size for the name */
+    font-weight: 600; /* Bold font for emphasis */
+    color: #000; /* Black color for readability */
+}
+
+.food-item-info .food-item-desc {
+    font-size: 16px; /* Font size for description */
+    color: #666; /* Gray color for secondary text */
+}
+
+.food-item-info .food-item-price {
+    font-size: 20px; /* Larger font size for the price */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #000; /* Black color for readability */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .left {
+        padding: 15px; /* Adjust padding for smaller screens */
+        gap: 15px; /* Adjust gap for smaller screens */
+    }
+    
+    .food-item-info .name {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .food-item-info .food-item-desc {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .food-item-info .food-item-price {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+}

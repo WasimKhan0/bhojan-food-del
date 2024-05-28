@@ -1,0 +1,43 @@
+.admin-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border-bottom: 1px solid rgb(223, 219, 219);
+
+}
+
+.admin-navbar .logo {
+    width: max(10%, 80px);
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+   
+}
+
+.admin-navbar .profile {
+    width: 40px;
+}
+
+.right-box {
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right-box h3 {
+    margin-top: 8px;
+    color: rgb(28, 27, 27);
+    cursor: pointer;
+}
+
+.right-box h3:hover {
+    color: rgb(95, 94, 94);
+}

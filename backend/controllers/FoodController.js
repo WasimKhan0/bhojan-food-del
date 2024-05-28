@@ -2,7 +2,7 @@ import foodModel from "../models/foodModel.js";
 import fs, { unlink } from 'fs'
 
 //add food item
- 
+
 
 const addFood = async (req, res) => {
     try {
@@ -46,11 +46,11 @@ const listFood = async (req, res) => {
 //remove food 
 const removeFood = async (req, res) => {
     try {
-        
+
         // console.log(req.params.id)
         const food = await foodModel.findById(req.params.id);
         // console.log(food)
-        fs.unlink(`uploads/${food.image}`, () => {})
+        fs.unlink(`uploads/${food.image}`, () => { })
         await foodModel.findByIdAndDelete(req.params.id);
         res.json({ success: true, message: "Food Removed" })
     }
@@ -60,5 +60,60 @@ const removeFood = async (req, res) => {
 
     }
 }
+
+const getItem = async (req, res) => {
+    try {
+        const food = await foodModel.findById(req.params.id);
+
+        res.json({ success: true, data: food })
+    }
+    catch (err) {
+        console.log(err)
+        res.json({ success: false, message: "Err" })
+
+    }
+}
  
-export { addFood, listFood, removeFood }
+
+const rating = async (req, res) => {
+    const { itemId, rating, userId,title,desc } = req.body;
+
+    try {
+         const food = await foodModel.findById(itemId);
+        if (!food) {
+            return res.json({ success: false, message: "Food item not found" });
+        }
+
+         const ratingNumber = Number(rating);
+
+        if (!food.nUserRated.includes(userId)) {
+            food.nUserRated.push(userId);
+            let numberOfUsers = food.nUserRated.length;
+
+            food.ratingSum = (food.ratingSum || 0) + ratingNumber;
+   
+            food.actRating = (food.ratingSum / numberOfUsers).toFixed(1);
+
+           
+            food.title.push(title);
+            food.desc.push(desc);
+
+            await food.save();
+   
+           res.json({ success: true, data: food });
+
+        }
+        else{
+            res.json({ success: false, message:"alreday rated" });
+
+        }
+       
+    } catch (err) {
+        console.log(err);
+        res.json({ success: false, message: "Error" });
+    }
+};
+
+ 
+
+export { addFood, listFood, removeFood, getItem,rating }

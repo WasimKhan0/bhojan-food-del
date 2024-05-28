@@ -11,7 +11,11 @@ const app = express();
 const PORT = 4000;
 
 // Middleware
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+    origin:[""],
+    methods:["POST","GET"],
+    credentials:true
+})); // Enable CORS for all routes
 app.use(express.json()); // Parse JSON request bodies
 
 // Allow CORS for specific routes

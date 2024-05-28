@@ -30,7 +30,7 @@ a {
   background: transparent;
   font-size: 16px;
   color: #49557e;
-  border: 1px solid tomato;
+  border: 1px solid #242424;
   padding: 10px 30px;
   border-radius: 50px;
   cursor: pointer;
@@ -38,7 +38,7 @@ a {
 }
 
 .navbar button:hover {
-  background-color: #fff4f2;
+  background-color: #eeeaea;
 }
 @keyframes fadeIn{
   0%{
@@ -47,4 +47,12 @@ a {
  100%{
     opacity: 1;
   }
+}
+.app-content{
+  display: flex;
+}
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
