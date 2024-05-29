@@ -6,7 +6,7 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("");
-    const url = "https://bhojan-food-del-api.vercel.app"
+    const url = "http://localhost:4000"
     const [food_list, setFoodlist] = useState([]);
     const [showBox, setShowBox] = useState(false);
     const [itemId, setItemId] = useState("");

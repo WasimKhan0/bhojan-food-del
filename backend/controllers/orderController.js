@@ -1,13 +1,11 @@
 import userModel from "../models/userModel.js"
-import foodModel from "../models/foodModel.js"
-import orderModel from "../models/orderModel.js"
+  import orderModel from '../models/orderModel.js'
 
 import Stripe from "stripe"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-//placing order from frontend
-const placeOrder = async (req, res) => {
+ const placeOrder = async (req, res) => {
     const frontend_url = "http://localhost:5173"
     try {
         const newOrder = new orderModel({
