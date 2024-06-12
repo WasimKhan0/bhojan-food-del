@@ -9,8 +9,10 @@ import Orders from '../Orders/Orders';
 
 import { Route, Routes } from 'react-router-dom'
 import Sidebar from '../../adminComponents/Sidebar/Sidebar';
+import { useContext } from 'react';
+import { StoreContext } from '../../Context/StoreContext';
 const Admin = () => {
-  const url = "http://localhost:4000";
+   const {url} = useContext(StoreContext);
 
   return (
     <div>

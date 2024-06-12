@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios'
 import { toast } from 'react-toastify';
-
+ 
 const List = ({url}) => {
+ 
    const [list,setList] = useState([]);
 
   const fetchList = async() =>{
@@ -18,8 +19,7 @@ const List = ({url}) => {
   const removeFood=async(foodId)=>{
     console.log(foodId);
     const res = await axios.post(`${url}/api/food/remove/${foodId}`)
-    // console.log(res);
-    await fetchList();
+     await fetchList();
     if(res.data.success){
       toast.success(res.data.message);
     }else{
