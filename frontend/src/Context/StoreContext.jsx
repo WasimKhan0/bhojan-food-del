@@ -6,7 +6,7 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("");
-    const url = "http://localhost:4000"
+    const url = "https://bhojan-backend-3.onrender.com/"
     const [food_list, setFoodlist] = useState([]);
     const [showBox, setShowBox] = useState(false);
     const [itemId, setItemId] = useState("");
