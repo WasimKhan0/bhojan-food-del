@@ -3,22 +3,33 @@ import cors from "cors";
 import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/FoodRoute.js"; 
 import userRouter from "./routes/userRoute.js";
-import 'dotenv/config'
+import 'dotenv/config';
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+
 // Config
 const app = express();
 const PORT = 4000;
 
 // Middleware
-app.use(cors()); 
-app.use(express.json());  
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173'); // Replace with your frontend origin
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
+const allowedOrigins = [
+    'http://localhost:5173', 
+    'https://your-netlify-app-name.netlify.app'  
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization'
+}));
+
+app.use(express.json());
 
 // API endpoints
 app.use('/api/food', foodRouter); // Food API routes
@@ -26,7 +37,6 @@ app.use('/images', express.static('uploads')); // Serve static images
 app.use('/api/user', userRouter); 
 app.use('/api/cart', cartRouter); 
 app.use('/api/order', orderRouter); 
-
 
 // Database connection
 connectDB();
